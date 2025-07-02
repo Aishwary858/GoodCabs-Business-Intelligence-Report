@@ -21,9 +21,9 @@ As part of this initiative, the Goodcabs management team aims to assess the comp
 - Step 10: Interactive Filters (Slicers) For City , Month and  Passenger Type .
   
 Create one measure table and add some important measure for Analysis
-1.Avg Driver Rating = AVERAGE(fact_trips[driver_rating])
-2.Avg Fare Per Km = DIVIDE([Total Fare(Revenue)],[Total Distance Travelled],0)
-3.Avg Fare Per Trip = DIVIDE([Total Fare(Revenue)],[Total Trips],0)
+-1.Avg Driver Rating = AVERAGE(fact_trips[driver_rating])
+-2.Avg Fare Per Km = DIVIDE([Total Fare(Revenue)],[Total Distance Travelled],0)
+-3.Avg Fare Per Trip = DIVIDE([Total Fare(Revenue)],[Total Trips],0)
 4.Avg Passenger Rating = AVERAGE(fact_trips[passenger_rating])
 5.Avg Passenger Rating Target = AVERAGE(city_target_passenger_rating[target_avg_passenger_rating])
 6.Avg Trip Distance = AVERAGE(fact_trips[distance_travelled(km)])
