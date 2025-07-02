@@ -20,30 +20,32 @@ As part of this initiative, the Goodcabs management team aims to assess the comp
 - Step 9 : Visual Creation & KPI Cards.
 - Step 10: Interactive Filters (Slicers) For City , Month and  Passenger Type .
   
-  
-In our dataset, Some parameters were assigned value 0, representing those parameters are not applicable for some customers.
+Create one measure table and add some important measure for Analysis
+1.Avg Driver Rating = AVERAGE(fact_trips[driver_rating])
+2.Avg Fare Per Km = DIVIDE([Total Fare(Revenue)],[Total Distance Travelled],0)
+3.Avg Fare Per Trip = DIVIDE([Total Fare(Revenue)],[Total Trips],0)
+4.Avg Passenger Rating = AVERAGE(fact_trips[passenger_rating])
+5.Avg Passenger Rating Target = AVERAGE(city_target_passenger_rating[target_avg_passenger_rating])
+6.Avg Trip Distance = AVERAGE(fact_trips[distance_travelled(km)])
+7.New Passengers = SUM(fact_passenger_summary[new_passengers])
+8.New Passengers Actual vs New Passengers Target = DIVIDE([New Passengers]-[New Target Passengers],[New Target Passengers],0)
+9.New Target Passengers = SUM(monthly_target_new_passengers[target_new_passengers])
+10.New Trips = CALCULATE([Total Trips],fact_trips[passenger_type]="new")
+11.New vs Repeated Passengers Trip Ratio = DIVIDE([New Trips],[Repeated Trips],0)
+12.Repeat Passenger Count = SUM(dim_repeat_trip_distribution[repeat_passenger_count])
+13.Repeat Passenger Rate % = DIVIDE([Repeated Passengers],[Total Passengers],0)
+14.Repeated Passengers = SUM(fact_passenger_summary[repeat_passengers])
+15.Repeated Trips = CALCULATE([Total Trips],fact_trips[passenger_type]="repeated")
+16.Total Distance Travelled = SUM(fact_trips[distance_travelled(km)])
+17.Total Fare(Revenue) = SUM(fact_trips[fare_amount])
+18.Total Passengers = SUM(fact_passenger_summary[total_passengers])
+19.Total Trips = DISTINCTCOUNTNOBLANK(fact_trips[trip_id])
+20.Trips Actual vs Trips Target = DIVIDE([Total Trips]-[Trips Target],[Trips Target],0)
+21.Trips Target = SUM(monthly_target_trips[total_target_trips])
 
-All these values have been ignored while calculating average rating for each of the parameters mentioned above.
 
-- Step 12 : In the report view, under the insert tab, two text boxes were added to the canvas, in one of them name of the airlines was mentioned & in the other one company's tagline was written.
-- Step 13 : In the report view, under the insert tab, using shapes option from elements group a rectangle was inserted & similarly using image option company's logo was added to the report design area. 
-- Step 14 : Calculated column was created in which, customers were grouped into various age groups.
+        
 
-for creating new column following DAX expression was written;
-       
-        Age Group = 
-        
-        if(airline_passenger_satisfaction[Age]<=25, "0-25 (25 included)",
-        
-        if(airline_passenger_satisfaction[Age]<=50, "25-50 (50 included)",
-        
-        if(airline_passenger_satisfaction[Age]<=75, "50-75 (75 included)",
-        
-        "75-100 (100 included)")))
-        
-Snap of new calculated column ,
-
-![Snap_1](https://user-images.githubusercontent.com/102996550/174089602-ab834a6b-62ce-4b62-8922-a1d241ec240e.jpg)
 
         
 - Step 15 : New measure was created to find total count of customers.
